@@ -77,7 +77,7 @@ void decalageAlphabet(int decalage, char alphabetADecaler[]) {
     }
 }
 
-//Renvoie la position dde la lettre lettre daans un alphabet
+//Renvoie la position de la lettre lettre daans un alphabet
 int chercherOccurence(char lettre, char alphabet[]) {
     for(int i = 0 ; i<26; i++){
         if(alphabet[i]==lettre){
