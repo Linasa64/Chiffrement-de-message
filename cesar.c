@@ -1,24 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-int getDecalageCesar();
-char conversionAccentsCommuns(wchar_t c);
-char codageCesarChar(int decalage, char c);
-char* codageCesarChaine(char* string, int decalage);
-char* deCodageCesarChaine(char* string, int decalage);
-void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage);
-
-void main() {
-    int decalage = getDecalageCesar();
-
-    FILE* fichier = NULL;
-    FILE* fichierCode = NULL;
- 
-    fichier = fopen("test.txt", "r");
-    fichierCode = fopen("testCode.txt", "w");
-    ecrireEtCoderFichierCesar(fichier, fichierCode, decalage);
-}
+#include "cesar.h"
+#include "fonctionsCommunes.h"
 
 int getDecalageCesar(){
     int decalage;
@@ -34,19 +18,7 @@ int getDecalageCesar(){
     return decalage;
 }
 
-char conversionAccentsCommuns(wchar_t c){
-  switch (c){
-  case L'à':
-    return 'a';
-
-  default:
-    return c;
-  }
-}
-
-char codageCesarChar(int decalage, char charAccent) {
-
-    char c = conversionAccentsCommuns((wchar_t) charAccent);
+char codageCesarChar(int decalage, char c) {
     
     if(getAsciiValueChar(c)>=32 && getAsciiValueChar(c)<=64 || getAsciiValueChar(c)>=91 && getAsciiValueChar(c)<=96 ||getAsciiValueChar(c)>=123 && getAsciiValueChar(c)<=126){
         return c;
@@ -115,5 +87,21 @@ void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
         fclose(fichierCode);
         printf("\nCodage César avec un décalage de %d effectué avec succès.\nConsultez le fichier testCode.txt pour voir le résultat.\n\n", decalage);
 
+    }
+}
+
+void ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
+    if (fichier != NULL && fichierCode != NULL)
+    {
+        char c;
+        char codee;
+        while((fgetc(fichier)) != EOF){
+            fseek(fichier, -1, SEEK_CUR);
+            c = fgetc(fichier);
+            codee = deCodageCesarChar(decalage, c);
+            fputc(codee, fichierCode); // essayer de modifier la fonction codageCesar pour qu'elle prenne en entree directement la valeur ascii entière
+        }
+        fclose(fichier);
+        fclose(fichierCode);
     }
 }

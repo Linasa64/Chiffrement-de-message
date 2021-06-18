@@ -1,24 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
-int getDecalageVigenere();
-char codageVigenereChar(char* cle, char c, int decalage);
-char deCodageVigenereChar(char* cle, char c, int decalage);
-void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle);
-
-void main() {
-    char cle[26];
-    printf("Quelle est la clé ?");
-    scanf("%s", cle);
-
-    FILE* fichier = NULL;
-    FILE* fichierCode = NULL;
- 
-    fichier = fopen("test.txt", "r");
-    fichierCode = fopen("testCode.txt", "w");
-    ecrireEtCoderFichierVigenere(fichier, fichierCode, cle);
-}
+#include "vigenere.h"
+#include "fonctionsCommunes.h"
 
 int getDecalageVigenere(char* cle, int position){
     return cle[((position)%strlen(cle))]-97;
@@ -82,6 +66,29 @@ void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
             fseek(fichier, -1, SEEK_CUR);
             c = fgetc(fichier);
             codee = codageVigenereChar(cle, c, getDecalageVigenere(cle, i));
+            
+            if(getAsciiValueChar(c)>=65 && getAsciiValueChar(c)<=90 || getAsciiValueChar(c)>=97 && getAsciiValueChar(c)<=122){
+                i++;
+
+            }
+            
+            fputc(codee, fichierCode); // essayer de modifier la fonction codageCesar pour qu'elle prenne en entree directement la valeur ascii entière
+        }
+        fclose(fichier);
+        fclose(fichierCode);
+    }
+}
+
+void ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
+    if (fichier != NULL && fichierCode != NULL)
+    {
+        char c;
+        int i = 0;
+        char codee;
+        while((fgetc(fichier)) != EOF){
+            fseek(fichier, -1, SEEK_CUR);
+            c = fgetc(fichier);
+            codee = deCodageVigenereChar(cle, c, getDecalageVigenere(cle, i));
             
             if(getAsciiValueChar(c)>=65 && getAsciiValueChar(c)<=90 || getAsciiValueChar(c)>=97 && getAsciiValueChar(c)<=122){
                 i++;

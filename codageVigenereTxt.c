@@ -58,7 +58,6 @@ char codageVigenereChar(char* cle, char c, int decalage) {
 
 }
 
-
 void ecrireEtCoderFichier (FILE* fichier, FILE* fichierCode, char* cle){
     if (fichier != NULL && fichierCode != NULL)
     {
