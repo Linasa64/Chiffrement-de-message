@@ -2,52 +2,30 @@
 #include <string.h>
 #include <stdlib.h>
 
-int getDecalageCesar();
-char conversionAccentsCommuns(wchar_t c);
-char codageCesarChar(int decalage, char c);
-char* codageCesarChaine(char* string, int decalage);
-char* deCodageCesarChaine(char* string, int decalage);
-void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage);
+int getDecalageVigenere();
+char codageVigenereChar(char* cle, char c, int decalage);
+char deCodageVigenereChar(char* cle, char c, int decalage);
+void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle);
 
 void main() {
-    int decalage = getDecalageCesar();
+    char cle[26];
+    printf("Quelle est la clé ?");
+    scanf("%s", cle);
 
     FILE* fichier = NULL;
     FILE* fichierCode = NULL;
  
     fichier = fopen("test.txt", "r");
     fichierCode = fopen("testCode.txt", "w");
-    ecrireEtCoderFichierCesar(fichier, fichierCode, decalage);
+    ecrireEtCoderFichierVigenere(fichier, fichierCode, cle);
 }
 
-int getDecalageCesar(){
-    int decalage;
-    printf("Quel est le décalage du message ?\n");
-    scanf("%d", &decalage);
-    if (decalage <0 || decalage >26){
-        do{
-            printf("Le décalage doit être compris entre 0 et 26\n");
-            printf("Quel est le décalage du message ?\n");
-            scanf("%d", &decalage);
-        }while (decalage <0 || decalage >26);
-    }
-    return decalage;
+int getDecalageVigenere(char* cle, int position){
+    return cle[((position)%strlen(cle))]-97;
 }
 
-char conversionAccentsCommuns(wchar_t c){
-  switch (c){
-  case L'à':
-    return 'a';
+char codageVigenereChar(char* cle, char c, int decalage) {
 
-  default:
-    return c;
-  }
-}
-
-char codageCesarChar(int decalage, char charAccent) {
-
-    char c = conversionAccentsCommuns((wchar_t) charAccent);
-    
     if(getAsciiValueChar(c)>=32 && getAsciiValueChar(c)<=64 || getAsciiValueChar(c)>=91 && getAsciiValueChar(c)<=96 ||getAsciiValueChar(c)>=123 && getAsciiValueChar(c)<=126){
         return c;
     }
@@ -67,9 +45,11 @@ char codageCesarChar(int decalage, char charAccent) {
             return getAsciiValueChar(c)+decalage-26;
         }
     }
+
 }
 
-char deCodageCesarChar(int decalage, char c) {
+char deCodageVigenereChar(char* cle, char c, int decalage) {
+
     if(getAsciiValueChar(c)>=32 && getAsciiValueChar(c)<=64 || getAsciiValueChar(c)>=91 && getAsciiValueChar(c)<=96 ||getAsciiValueChar(c)>=123 && getAsciiValueChar(c)<=126){
         return c;
     }
@@ -89,31 +69,28 @@ char deCodageCesarChar(int decalage, char c) {
             return getAsciiValueChar(c)-decalage+26;
         }
     }
+
 }
 
-char* codageCesarChaine(char* string, int decalage){
-    char* stringCodee = string;
-
-    for(int i= 0 ; i<strlen(string) ; i++){
-        stringCodee[i] = codageCesarChar(decalage, string[i]);
-    }
-    return stringCodee;
-}
-
-void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
+void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
     if (fichier != NULL && fichierCode != NULL)
     {
         char c;
+        int i = 0;
         char codee;
         while((fgetc(fichier)) != EOF){
             fseek(fichier, -1, SEEK_CUR);
             c = fgetc(fichier);
-            codee = codageCesarChar(decalage, c);
+            codee = codageVigenereChar(cle, c, getDecalageVigenere(cle, i));
+            
+            if(getAsciiValueChar(c)>=65 && getAsciiValueChar(c)<=90 || getAsciiValueChar(c)>=97 && getAsciiValueChar(c)<=122){
+                i++;
+
+            }
+            
             fputc(codee, fichierCode); // essayer de modifier la fonction codageCesar pour qu'elle prenne en entree directement la valeur ascii entière
         }
         fclose(fichier);
         fclose(fichierCode);
-        printf("\nCodage César avec un décalage de %d effectué avec succès.\nConsultez le fichier testCode.txt pour voir le résultat.\n\n", decalage);
-
     }
 }
