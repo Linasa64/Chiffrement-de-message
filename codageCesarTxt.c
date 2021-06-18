@@ -2,10 +2,10 @@
 #include <string.h>
 #include <stdlib.h>
 
-void saisieChaine(FILE* fichier, char* string, size_t taille, int nbCharLu);
 int getDecalage();
 void afficherChaine(const char* string);
 int getAsciiValueChar(char ch);
+char conversionAccentsCommuns(wchar_t c);
 char codageCesarChar(int decalage, char c);
 char* codageCesarChaine(char* string, int decalage);
 void ecrireEtCoderFichier (FILE* fichier, FILE* fichierCode, int decalage);
@@ -13,24 +13,11 @@ void ecrireEtCoderFichier (FILE* fichier, FILE* fichierCode, int decalage);
 void main() {
     int decalage = getDecalage();
 
-    char* string = NULL;
-    char* stringCodee = NULL;
-    char* stringDeCodee = NULL;
-    size_t taille = 0;
-    int nbCharLu = 0;
-
     FILE* fichier = NULL;
     FILE* fichierCode = NULL;
  
     fichier = fopen("test.txt", "r");
     fichierCode = fopen("testCode.txt", "w");
-
-    printf("Code César avec un décalage de %d\n\n", decalage);
-    //saisieChaine(fichier, string, taille, nbCharLu);
-    //stringCodee = codageCesarChaine(string, decalage);
-    //printf("Après codage : ");
-    //afficherChaine(stringCodee);
-
     ecrireEtCoderFichier(fichier, fichierCode, decalage);
 }
 
@@ -48,13 +35,6 @@ int getDecalage(){
     return decalage;
 }
 
-void saisieChaine(FILE* fichier, char* string, size_t taille, int nbCharLu){
-
-    printf("Saisir le texte à coder : ");
-    nbCharLu = getline(&string, &taille, stdin);
-    fputs(string, fichier); 
-}
-
 void afficherChaine(const char* string){
     printf("%s\n", string );
 }
@@ -63,7 +43,20 @@ int getAsciiValueChar(char ch) {
     return "%d", ch;
 }
 
-char codageCesarChar(int decalage, char c) {
+char conversionAccentsCommuns(wchar_t c){
+  switch (c){
+  case L'à':
+    return 'a';
+
+  default:
+    return c;
+  }
+}
+
+char codageCesarChar(int decalage, char charAccent) {
+
+    char c = conversionAccentsCommuns((wchar_t) charAccent);
+    
     if(getAsciiValueChar(c)>=32 && getAsciiValueChar(c)<=64 || getAsciiValueChar(c)>=91 && getAsciiValueChar(c)<=96 ||getAsciiValueChar(c)>=123 && getAsciiValueChar(c)<=126){
         return c;
     }
@@ -107,5 +100,7 @@ void ecrireEtCoderFichier (FILE* fichier, FILE* fichierCode, int decalage){
         }
         fclose(fichier);
         fclose(fichierCode);
+        printf("\nCodage César avec un décalage de %d effectué avec succès.\nConsultez le fichier testCode.txt pour voir le résultat.\n\n", decalage);
+
     }
 }
