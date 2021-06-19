@@ -20,7 +20,6 @@
 *                                                                             *
 ******************************************************************************/
 
-
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -53,8 +52,8 @@ void main() {
     FILE* fichier = NULL;
     FILE* fichierCode = NULL;
  
-    fichier = fopen("test.txt", "r");
-    fichierCode = fopen("testCode.txt", "w");
+    fichier = fopen("texte.txt", "r");
+    fichierCode = fopen("texteCode.txt", "w");
 
     // Définition des variables qui vont être utiles dans le switch
     int decalage;
