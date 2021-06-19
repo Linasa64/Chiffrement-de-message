@@ -6,15 +6,7 @@
 
 int getDecalageCesar(){
     int decalage;
-    printf("Saisissez le décalage du message : ");
     scanf("%d", &decalage);
-    if (decalage <0 || decalage >26){
-        do{
-            printf("Le décalage doit être compris entre 0 et 26\n");
-            printf("Saisissez le décalage du message : ");
-            scanf("%d", &decalage);
-        }while (decalage <0 || decalage >26);
-    }
     return decalage;
 }
 

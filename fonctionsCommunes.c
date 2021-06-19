@@ -15,7 +15,6 @@ char* saisieChaine(){
     char* string = NULL;
     size_t taille = 0;
     int nbCharLu = 0;
-    printf("Saisir la chaine de caractères à traiter : ");
     nbCharLu = getline(&string, &taille, stdin); 
     return string;
 }

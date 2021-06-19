@@ -67,30 +67,49 @@ void main() {
     switch (choix){
         case 1:; // Codage Cesar chaîne
             poubelle = getchar();
+            printf("Saisir la chaine de caractères à traiter : ");
             message = saisieChaine();
             if(verificationAlphanumeriqueChaine(message)==1){
                 printf("Erreur : La chaîne saisie n'est pas correcte.\n");
                 break;
             }
+            printf("Saisissez le décalage du message : ");
             decalage = getDecalageCesar();
+            if (decalage <0 || decalage >26){
+                do {
+                    printf("Le décalage doit être compris entre 0 et 26\n");
+                    printf("Saisissez le décalage du message : ");
+                    scanf("%d", &decalage);
+                } while (decalage <0 || decalage >26);
+            }
             printf("Voici le message codé : ");
             afficherChaine(codageCesarChaine(message, decalage));
             break;
         
         case 2:; // Decodage Cesar chaîne
             poubelle = getchar();
+            printf("Saisir la chaine de caractères à traiter : ");
             message = saisieChaine();
             if(verificationAlphanumeriqueChaine(message)==1){
                 printf("Erreur : La chaîne saisie n'est pas correcte.\n");
                 break;
             }
+            printf("Saisissez le décalage du message : ");
             decalage = getDecalageCesar();
+            if (decalage <0 || decalage >26){
+                do {
+                    printf("Le décalage doit être compris entre 0 et 26\n");
+                    printf("Saisissez le décalage du message : ");
+                    scanf("%d", &decalage);
+                } while (decalage <0 || decalage >26);
+            }
             printf("Voici le message décodé : ");
             afficherChaine(deCodageCesarChaine(message, decalage));
             break;
         
         case 3:; // Codage Vigenere chaîne
             poubelle = getchar();
+            printf("Saisir la chaine de caractères à traiter : ");
             message = saisieChaine();
             if(verificationAlphanumeriqueChaine(message)==1){
                 printf("Erreur : La chaîne saisie n'est pas correcte.\n");
@@ -112,6 +131,7 @@ void main() {
         
         case 4:; // Decodage Vigenere chaîne
             poubelle = getchar();
+            printf("Saisir la chaine de caractères à traiter : ");
             message = saisieChaine();
             if(verificationAlphanumeriqueChaine(message)==1){
                 printf("\nErreur : La chaîne saisie n'est pas correcte.\n");
@@ -132,12 +152,28 @@ void main() {
             break;
         
         case 5:; // Codage César fichier
+            printf("Saisissez le décalage du message : ");
             decalage = getDecalageCesar();
+            if (decalage <0 || decalage >26){
+                do {
+                    printf("Le décalage doit être compris entre 0 et 26\n");
+                    printf("Saisissez le décalage du message : ");
+                    scanf("%d", &decalage);
+                } while (decalage <0 || decalage >26);
+            }
             ecrireEtCoderFichierCesar(fichier, fichierCode, decalage);
             break;
         
         case 6:; // Decodage Cesar fichier
+            printf("Saisissez le décalage du message : ");
             decalage = getDecalageCesar();
+            if (decalage <0 || decalage >26){
+                do {
+                    printf("Le décalage doit être compris entre 0 et 26\n");
+                    printf("Saisissez le décalage du message : ");
+                    scanf("%d", &decalage);
+                } while (decalage <0 || decalage >26);
+            }
             ecrireEtDecoderFichierCesar(fichier, fichierCode, decalage);
             break;
         
