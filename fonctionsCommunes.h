@@ -5,3 +5,4 @@
 void afficherChaine(const char* string);
 int getAsciiValueChar(char ch);
 char* saisieChaine();
+int verificationAlphanumeriqueChaine(char* string);

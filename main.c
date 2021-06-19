@@ -31,30 +31,22 @@
 
 void main() {
 
-    //Affichage des choix possibles
-    printf("Bienvenue dans l'application de codage-décodage de texte !\n");
-    printf("Saisissez l'option que vous souhaitez: \n\n");
-    printf("Sur des textes LONGS dans un fichier.txt...\n");
-    printf("*********** CODER ***********\n");
-    printf("\t1: Coder en CESAR\n");
-    printf("\t2: Coder en VIGENERE\n\n");
-    printf("********** DECODER *********\n");
-    printf("\t3: Décoder en CESAR\n");
-    printf("\t4: Décoder en VIGENERE\n\n");
-    printf("***************************************************************");
-    printf("\n\nSur des textes COURTS à saisir dans le terminal...\n");
-    printf("*********** CODER ***********\n");
-    printf("\t5: Coder en CESAR\n");
-    printf("\t6: Coder en VIGENERE\n\n");
-    printf("********** DECODER *********\n");
-    printf("\t7: Décoder en CESAR\n");
-    printf("\t8: Décoder en VIGENERE\n\n");
+
+    printf("\n                       *** Bienvenue dans l'application de codage / décodage de messages ! ***\n\n");
+    printf("************************************************************************************************************************\n");
+    printf("*                                       *            CODAGE CESAR            *           CODAGE VIGENERE               *\n");
+    printf("************************************************************************************************************************\n");
+    printf("* Saisir une phrase dans le terminal    *  1 : Coder     *   2 :  Décoder    *   3 :  Coder     *   4 :  Décoder       *\n");
+    printf("************************************************************************************************************************\n");
+    printf("* Texte long (fichier .txt)             *  5 : Coder     *   6 : Décoder     *   7 : Coder      *   8 :  Décoder       *\n");
+    printf("************************************************************************************************************************\n\n");
 
 
     // Sélection d'un choix
-    printf("Choisissez une option: ");
+    printf("CHOISISSEZ UNE OPTION: ");
     int choix=0;
     scanf("%d", &choix);
+    printf("\n");
 
     // Ouverture des fichiers .txt à coder/décoder
 
@@ -71,39 +63,116 @@ void main() {
     int poubelle;
 
     // Switch qui réoriente vers les actions correspondant aux choix possibles
+    // Vérification et affichage de messages d'erreurs
     switch (choix){
-        case 1:; // Codage César fichier
+        case 1:; // Codage Cesar chaîne
+            poubelle = getchar();
+            message = saisieChaine();
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("Erreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            decalage = getDecalageCesar();
+            printf("Voici le message codé : ");
+            afficherChaine(codageCesarChaine(message, decalage));
+            break;
+        
+        case 2:; // Decodage Cesar chaîne
+            poubelle = getchar();
+            message = saisieChaine();
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("Erreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            decalage = getDecalageCesar();
+            printf("Voici le message décodé : ");
+            afficherChaine(deCodageCesarChaine(message, decalage));
+            break;
+        
+        case 3:; // Codage Vigenere chaîne
+            poubelle = getchar();
+            message = saisieChaine();
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("Erreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            printf("Saisissez la clé : ");
+            scanf("%s", cle);
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("\nErreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            if(verifierCaracteresMinusculesCle(cle)==1){
+                printf("Erreur : La clé saisie n'est pas correcte. Vérifiez qu'elle soit bien en minuscules.\n");
+                break;
+            }
+            printf("Voici le message codé : ");
+            afficherChaine(codageVigenereChaine(message, cle));
+            break;
+        
+        case 4:; // Decodage Vigenere chaîne
+            poubelle = getchar();
+            message = saisieChaine();
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("\nErreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            printf("Saisissez la clé : ");
+            scanf("%s", cle);
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("\nErreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            if(verifierCaracteresMinusculesCle(cle)==1){
+                printf("Erreur : La clé saisie n'est pas correcte.\nVérifiez qu'elle soit bien en minuscules.\n");
+                break;
+            }
+            printf("Voici le message décodé : ");
+            afficherChaine(deCodageVigenereChaine(message, cle));
+            break;
+        
+        case 5:; // Codage César fichier
             decalage = getDecalageCesar();
             ecrireEtCoderFichierCesar(fichier, fichierCode, decalage);
             break;
-        case 2:; // Codage Vigenere fichier
-            cle[26];
-            printf("Quelle est la clé ?");
-            scanf("%s", cle);
-            ecrireEtCoderFichierVigenere(fichier, fichierCode, cle);
-            break;
-        case 3:; // Decodage Cesar fichier
+        
+        case 6:; // Decodage Cesar fichier
             decalage = getDecalageCesar();
             ecrireEtDecoderFichierCesar(fichier, fichierCode, decalage);
             break;
-        case 4:; // Decodage Vigenere fichier
+        
+        case 7:; // Codage Vigenere fichier
             cle[26];
-            printf("Quelle est la clé ?");
-            scanf("%s", cle);
-            ecrireEtDecoderFichierVigenere(fichier, fichierCode, cle);
-            break;
-        case 5:; // Codage Cesar chaîne
-            poubelle = getchar();
-            message = saisieChaine();
-            decalage = getDecalageCesar();
-            afficherChaine(codageCesarChaine(message, decalage));
-            break;
-        case 6:;
-            poubelle = getchar();
-            message = saisieChaine();
             printf("Quelle est la clé ? ");
             scanf("%s", cle);
-            afficherChaine(codageVigenereChaine(message, cle));
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("\nErreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            if(verifierCaracteresMinusculesCle(cle)==1){
+                printf("Erreur : La clé saisie n'est pas correcte.\nVérifiez qu'elle soit bien en minuscules.\n");
+                break;
+            }
+            ecrireEtCoderFichierVigenere(fichier, fichierCode, cle);
+            break;
+        
+        case 8:; // Decodage Vigenere fichier
+            cle[26];
+            printf("Quelle est la clé ? ");
+            scanf("%s", cle);
+            if(verificationAlphanumeriqueChaine(message)==1){
+                printf("\nErreur : La chaîne saisie n'est pas correcte.\n");
+                break;
+            }
+            if(verifierCaracteresMinusculesCle(cle)==1){
+                printf("Erreur : La clé saisie n'est pas correcte.\nVérifiez qu'elle soit bien en minuscules.\n");
+                break;
+            }
+            ecrireEtDecoderFichierVigenere(fichier, fichierCode, cle);
+            break;
+        
+        default:;
+            printf("Erreur : L'option saisie n'existe pas.");
             break;
     }
 }

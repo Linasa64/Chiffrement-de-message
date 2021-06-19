@@ -6,12 +6,12 @@
 
 int getDecalageCesar(){
     int decalage;
-    printf("Quel est le décalage du message ?\n");
+    printf("Saisissez le décalage du message : ");
     scanf("%d", &decalage);
     if (decalage <0 || decalage >26){
         do{
             printf("Le décalage doit être compris entre 0 et 26\n");
-            printf("Quel est le décalage du message ?\n");
+            printf("Saisissez le décalage du message : ");
             scanf("%d", &decalage);
         }while (decalage <0 || decalage >26);
     }
@@ -72,6 +72,14 @@ char* codageCesarChaine(char* string, int decalage){
     return stringCodee;
 }
 
+char* deCodageCesarChaine(char* string, int decalage){
+    char* stringCodee = string;
+    for(int i=0 ; i<strlen(string) ; i++){
+        stringCodee[i] = deCodageCesarChar(decalage, string[i]);
+    }
+    return stringCodee;
+}
+
 void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
     if (fichier != NULL && fichierCode != NULL)
     {
@@ -86,7 +94,6 @@ void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
         fclose(fichier);
         fclose(fichierCode);
         printf("\nCodage César avec un décalage de %d effectué avec succès.\nConsultez le fichier testCode.txt pour voir le résultat.\n\n", decalage);
-
     }
 }
 
