@@ -21,6 +21,7 @@ Permet de demander à l'utilisateur le décalage qu'il désire.
 ### char codageCesarChar(int decalage, char c)
 entrée : (entier) nombre de décalage à appliquer en avant
          (caractère) caractère à coder
+
 sortie : (caractère) caractère codé
 
 Permet de coder un caractère avec un décalage donné, modulo 26.
@@ -31,6 +32,7 @@ Les caractères spéciaux de la table ASCII de base restent intacts, de même qu
 ### char deCodageCesarChar(int decalage, char c)
 entrée : (entier) nombre de décalage à appliquer en arrière
          (caractère) caractère à décoder
+
 sortie : (caractère) caractère décodé
 
 Permet de décoder un caractère avec un décalage connu, modulo 26.
@@ -41,6 +43,7 @@ Les caractères spéciaux de la table ASCII de base restent intacts, de même qu
 ### char* codageCesarChaine(char* string, int decalage)
 entrée : (chaîne) chaîne à coder
          (entier) nombre de décalage à appliquer en avant
+
 sortie : (chaîne) chaîne codée
 
 Permet de coder une chaine de caractères, caractère par caractère, en faisant appel à la fonction codageCesarChar.
@@ -48,6 +51,7 @@ Permet de coder une chaine de caractères, caractère par caractère, en faisant
 ### char* deCodageCesarChaine(char* string, int decalage)
 entrée : (chaîne) chaîne à coder
          (entier) nombre de décalage à appliquer en avant
+
 sortie : (chaîne) chaîne codée
 
 Permet de décoder une chaine de caractères, caractère par caractère, en faisant appel à la fonction deCodageCesarChar
