@@ -29,7 +29,23 @@ char codageVigenereChar(char* cle, char c, int decalage) {
             return getAsciiValueChar(c)+decalage-26;
         }
     }
+}
 
+char* codageVigenereChaine(char* string, char* cle){
+    char* stringCodee = string;
+    int decalage;
+    int curseurCle = 0;
+
+    for(int curseur= 0 ; curseur<strlen(string) ; curseur++){
+        decalage = getDecalageVigenere(cle, curseurCle);
+
+        if(getAsciiValueChar(string[curseur])>=65 && getAsciiValueChar(string[curseur])<=90 || getAsciiValueChar(string[curseur])>=97 && getAsciiValueChar(string[curseur])<=122){
+            curseurCle++;
+        }
+
+        stringCodee[curseur] = codageVigenereChar(cle, string[curseur], decalage);
+    }
+    return stringCodee;
 }
 
 char deCodageVigenereChar(char* cle, char c, int decalage) {
@@ -69,7 +85,6 @@ void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
             
             if(getAsciiValueChar(c)>=65 && getAsciiValueChar(c)<=90 || getAsciiValueChar(c)>=97 && getAsciiValueChar(c)<=122){
                 i++;
-
             }
             
             fputc(codee, fichierCode); // essayer de modifier la fonction codageCesar pour qu'elle prenne en entree directement la valeur ascii entière
