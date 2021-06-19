@@ -68,6 +68,7 @@ void main() {
     int decalage;
     char cle[26];
     char* message = NULL;
+    int poubelle;
 
     // Switch qui réoriente vers les actions correspondant aux choix possibles
     switch (choix){
@@ -92,8 +93,17 @@ void main() {
             ecrireEtDecoderFichierVigenere(fichier, fichierCode, cle);
             break;
         case 5:; // Codage Cesar chaîne
-            message = saisieChaine(); //WOLA CA MARCHE PAS POURQUOIIIII
+            poubelle = getchar();
+            message = saisieChaine();
             decalage = getDecalageCesar();
             afficherChaine(codageCesarChaine(message, decalage));
+            break;
+        case 6:;
+            poubelle = getchar();
+            message = saisieChaine();
+            printf("Quelle est la clé ? ");
+            scanf("%s", cle);
+            afficherChaine(codageVigenereChaine(message, cle));
+            break;
     }
 }

@@ -2,57 +2,26 @@
 #include <string.h>
 #include <stdlib.h>
 
-char codageVigenereChar(char* cle, char c, int decalage);
-int getAsciiValueChar(char ch);
+char* saisieChaine();
+void afficherChaine(const char* string);
 
 int main(){
 
-  char cle[26];
-  printf("Quelle est la clé ?");
-  scanf("%s", cle);
-
-  char message[26];
-  printf("Quelle est le message ?");
-  scanf("%s", message);
-  int taille = strlen(cle);
-  //printf("%d/n", taille);
-  
-  int decalage;
-
-  for(int i=0 ; i<strlen(message) ; i++){
-    //printf("%d/n", i);
-    //printf("%ld/n", strlen(cle));
-    decalage = cle[((i)%strlen(cle))]-97;
-    //printf("%d\n", decalage);
-
-    printf("%c", codageVigenereChar(cle, message[i], decalage));
-  }
+    char* message = NULL;
+    message = saisieChaine();
+    afficherChaine(message);
 
 }
 
-char codageVigenereChar(char* cle, char c, int decalage) {
-
-    if(getAsciiValueChar(c)>=32 && getAsciiValueChar(c)<=64 || getAsciiValueChar(c)>=91 && getAsciiValueChar(c)<=96 ||getAsciiValueChar(c)>=123 && getAsciiValueChar(c)<=126){
-        return c;
-    }
-    else if(getAsciiValueChar(c)>=65 && getAsciiValueChar(c)<=90){
-        if(getAsciiValueChar(c)+decalage<=90){
-            return getAsciiValueChar(c)+decalage;
-        }
-        else{
-            return ((getAsciiValueChar(c)+decalage)-26);
-        }
-    }
-    else if (getAsciiValueChar(c)>=97 && getAsciiValueChar(c)<=122){
-        if(getAsciiValueChar(c)+decalage<=122){
-            return getAsciiValueChar(c)+decalage;
-        }
-        else{
-            return getAsciiValueChar(c)+decalage-26;
-        }
-    }
+char* saisieChaine(){
+    char* string = NULL;
+    size_t taille = 0;
+    int nbCharLu = 0;
+    printf("Saisir le texte à coder : ");
+    nbCharLu = getline(&string, &taille, stdin); 
+    return string;
 }
 
-int getAsciiValueChar(char ch) {
-    return "%d", ch;
+void afficherChaine(const char* string){
+    printf("%s\n", string );
 }
