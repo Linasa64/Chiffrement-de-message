@@ -18,7 +18,7 @@ void main() {
     fichier = fopen("test.txt", "r");
     fichierCode = fopen("testCode.txt", "w");
 
-    printf("Codage céssar avec un décalage de %d effectué avec succès.\nConsultez le fichier testCode.txt pour consulter le résultat.\n\n", decalage);
+    printf("décodage céssar avec un décalage de %d effectué avec succès.\nConsultez le fichier testCode.txt pour consulter le résultat.\n\n", decalage);
     ecrireEtCoderFichier(fichier, fichierCode, decalage);
 }
 
