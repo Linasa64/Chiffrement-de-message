@@ -9,11 +9,11 @@ Cette application dispose de 8 fonctionnalités distinctes: le codage et décoda
 Il est nécessaire de compiler les fichiers, et pour cela il faut utiliser le makefile, et taper la commande ``make all``.
 Ensuite, pour exécuter le programme, il faut taper la commande ``./main``.
 
-## Documentation des fonctions
+# Documentation des fonctions
 
-### cesar.c
+## cesar.c
 
-#### int getDecalageCesar()
+### int getDecalageCesar()
 sortie: (entier) nombre de décalage à appliquer
 
 Permet de demander à l'utilisateur le décalage qu'il désire.
