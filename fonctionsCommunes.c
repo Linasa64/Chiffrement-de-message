@@ -43,9 +43,16 @@ char* saisieChaine(){
 
 int verificationAlphanumeriqueChaine(char* string){
     for(int i = 0 ; i < strlen(string) ; i++){
-        if(getAsciiValueChar(string[i]<0 || getAsciiValueChar(string[i]>126))){
+        if(getAsciiValueChar(string[i]<0) || getAsciiValueChar(string[i])>126){
             return 1;
         }
+    }
+    return 0;
+}
+
+int verificationAlphanumeriqueCaractere(char c){
+    if(getAsciiValueChar(c)<0 || getAsciiValueChar(c)>126){
+        return 1;
     }
     return 0;
 }

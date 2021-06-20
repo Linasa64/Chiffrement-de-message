@@ -94,7 +94,7 @@ char* deCodageCesarChaine(char* string, int decalage){
     return stringCodee;
 }
 
-void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
+int ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
     if (fichier != NULL && fichierCode != NULL)
     {
         char c;
@@ -102,16 +102,19 @@ void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
         while((fgetc(fichier)) != EOF){
             fseek(fichier, -1, SEEK_CUR);
             c = fgetc(fichier);
+            if(verificationAlphanumeriqueCaractere(c)==1){
+                return 1;
+            }
             codee = codageCesarChar(decalage, c);
             fputc(codee, fichierCode); // essayer de modifier la fonction codageCesar pour qu'elle prenne en entree directement la valeur ascii entière
         }
         fclose(fichier);
         fclose(fichierCode);
-        printf("\nCodage César avec un décalage de %d effectué avec succès.\nConsultez le fichier testCode.txt pour voir le résultat.\n\n", decalage);
+        return 0;
     }
 }
 
-void ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
+int ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage){
     if (fichier != NULL && fichierCode != NULL)
     {
         char c;
@@ -119,10 +122,14 @@ void ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage
         while((fgetc(fichier)) != EOF){
             fseek(fichier, -1, SEEK_CUR);
             c = fgetc(fichier);
+            if(verificationAlphanumeriqueCaractere(c)==1){
+                return 1;
+            }
             codee = deCodageCesarChar(decalage, c);
             fputc(codee, fichierCode); // essayer de modifier la fonction codageCesar pour qu'elle prenne en entree directement la valeur ascii entière
         }
         fclose(fichier);
         fclose(fichierCode);
+        return 0;
     }
 }

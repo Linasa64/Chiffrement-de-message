@@ -59,6 +59,7 @@ void main() {
     char cle[26];
     char* message = NULL;
     int poubelle;
+    int realisationOK;
 
     // Switch qui réoriente vers les actions correspondant aux choix possibles
     // Vérification et affichage de messages d'erreurs
@@ -159,7 +160,14 @@ void main() {
                     scanf("%d", &decalage);
                 } while (decalage <0 || decalage >26);
             }
-            ecrireEtCoderFichierCesar(fichier, fichierCode, decalage);
+            realisationOK = ecrireEtCoderFichierCesar(fichier, fichierCode, decalage);
+            if (realisationOK == 0){
+                printf("\nCodage César effectué avec succès.\nConsultez le fichier texteCode.txt pour voir le résultat.\n\n");
+            }
+            else {
+                printf("Erreur : le fichier contient des caractères spéciaux non traités par l'application.\n");
+                break;
+            }
             break;
         
         case 6:; // Decodage Cesar fichier
@@ -172,7 +180,14 @@ void main() {
                     scanf("%d", &decalage);
                 } while (decalage <0 || decalage >26);
             }
-            ecrireEtDecoderFichierCesar(fichier, fichierCode, decalage);
+            realisationOK = ecrireEtDecoderFichierCesar(fichier, fichierCode, decalage);
+            if (realisationOK == 0){
+                printf("\nCodage César effectué avec succès.\nConsultez le fichier texteCode.txt pour voir le résultat.\n\n");
+            }
+            else {
+                printf("Erreur : le fichier contient des caractères spéciaux non traités par l'application.\n");
+                break;
+            }
             break;
         
         case 7:; // Codage Vigenere fichier
@@ -187,7 +202,14 @@ void main() {
                 printf("Erreur : La clé saisie n'est pas correcte.\nVérifiez qu'elle soit bien en minuscules.\n");
                 break;
             }
-            ecrireEtCoderFichierVigenere(fichier, fichierCode, cle);
+            realisationOK = ecrireEtCoderFichierVigenere(fichier, fichierCode, cle);
+            if (realisationOK == 0){
+                printf("\nCodage César effectué avec succès.\nConsultez le fichier texteCode.txt pour voir le résultat.\n\n");
+            }
+            else {
+                printf("Erreur : le fichier contient des caractères spéciaux non traités par l'application.\n");
+                break;
+            }
             break;
         
         case 8:; // Decodage Vigenere fichier
@@ -202,11 +224,18 @@ void main() {
                 printf("Erreur : La clé saisie n'est pas correcte.\nVérifiez qu'elle soit bien en minuscules.\n");
                 break;
             }
-            ecrireEtDecoderFichierVigenere(fichier, fichierCode, cle);
+            realisationOK = ecrireEtDecoderFichierVigenere(fichier, fichierCode, cle);
+            if (realisationOK == 0){
+                printf("\nCodage César effectué avec succès.\nConsultez le fichier texteCode.txt pour voir le résultat.\n\n");
+            }
+            else {
+                printf("Erreur : le fichier contient des caractères spéciaux non traités par l'application.\n");
+                break;
+            }
             break;
         
         default:;
-            printf("Erreur : L'option saisie n'existe pas.");
+            printf("Erreur : L'option saisie n'existe pas.\n");
             break;
     }
 }

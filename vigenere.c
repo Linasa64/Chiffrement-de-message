@@ -109,7 +109,7 @@ char* deCodageVigenereChaine(char* string, char* cle) {
     return stringCodee;
 }
 
-void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
+int ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
     if (fichier != NULL && fichierCode != NULL)
     {
         char c;
@@ -118,6 +118,9 @@ void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
         while((fgetc(fichier)) != EOF){
             fseek(fichier, -1, SEEK_CUR);
             c = fgetc(fichier);
+            if(verificationAlphanumeriqueCaractere(c)==1){
+                return 1;
+            }
             codee = codageVigenereChar(cle, c, getDecalageVigenere(cle, i));
             
             if(getAsciiValueChar(c)>=65 && getAsciiValueChar(c)<=90 || getAsciiValueChar(c)>=97 && getAsciiValueChar(c)<=122){
@@ -127,10 +130,12 @@ void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
         }
         fclose(fichier);
         fclose(fichierCode);
+        return 0;
     }
+    return 1;
 }
 
-void ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
+int ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle){
     if (fichier != NULL && fichierCode != NULL)
     {
         char c;
@@ -139,6 +144,9 @@ void ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle
         while((fgetc(fichier)) != EOF){
             fseek(fichier, -1, SEEK_CUR);
             c = fgetc(fichier);
+            if(verificationAlphanumeriqueCaractere(c)==1){
+                return 1;
+            }
             codee = deCodageVigenereChar(cle, c, getDecalageVigenere(cle, i));
             
             if(getAsciiValueChar(c)>=65 && getAsciiValueChar(c)<=90 || getAsciiValueChar(c)>=97 && getAsciiValueChar(c)<=122){
@@ -148,7 +156,9 @@ void ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle
         }
         fclose(fichier);
         fclose(fichierCode);
+        return 0;
     }
+    return 1;
 }
 
 int verifierCaracteresMinusculesCle(char* cle){
@@ -157,5 +167,4 @@ int verifierCaracteresMinusculesCle(char* cle){
             return 1;
         }
     }
-    return 0;
 }
