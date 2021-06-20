@@ -1,5 +1,7 @@
 # Chiffrement-de-message
-Projet réalisé par Asala Dikra Lakhdar Barka et Lina Borg.
+Projet réalisé par Asala Dikra Lakhdar Barka et Lina Borg (A1).
+
+Projet disponible ici : https://github.com/Linasa64/Chiffrement-de-message (il est conseillé de lire le readme directement sur la page d'accueil du projet sur GitHub).
 
 Codage et décodage de fichiers .txt et de phrases saisies dans le terminal, avec les méthodes César et Vigenère.
 
