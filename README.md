@@ -5,9 +5,13 @@ Codage et décodage de fichiers .txt et de phrases saisies dans le terminal, ave
 Projet réalisé par Asala Dikra Lakhdar Barka et Lina Borg.
 
 Cette application dispose de 8 fonctionnalités distinctes: le codage et décodage en César et Vigenère de saisie de texte ou de fichiers d'extension .txt.
+
 Elle fonctionne avec l'ensemble des caractères, aussi bien lettres que caractères spéciaux de la table ASCII de base, et non étendue.
+
 Cela comprend les lettres majuscules et minuscules que l'application sait distinguer. La casse est donc conservée d'un message à son message codé, et inversement.
+
 Les caractères spéciaux utilisables sont les suivants : ! " # $ % & ' ( ) * + - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @
+
 A noter que les accents ne sont pas pris en compte, et que l'ensemble des textes saisis doivent en être exempts.
 
 ## Utilisation de l'application
