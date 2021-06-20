@@ -191,6 +191,11 @@ Etant donné qu'il a été demandé de ne pas mettre d'affichage de texte dans l
 
 Si une erreur est détectée, alors un message d'information est affichée, puis l'application est arrêtée, ou alors une nouvelle saisie est demandée.
 
-###  • case 1
+###  • case 1 & 2
 - La chaîne saisie contient des caractères spéciaux non traités par l'application (arrêt)
 - Le décalage saisi n'est pas compris entre 0 et 26 (nouvelle demande de saisie)
+
+###  • case 3 & 4
+- La chaîne saisie contient des caractères spéciaux non traités par l'application (arrêt)
+- La clé saisie contient des caractères spéciaux non traités par l'application (arrêt)
+- La clé saisie n'est pas entièrement en minuscules (arrêt)
