@@ -3,8 +3,6 @@ Projet réalisé par Asala Dikra Lakhdar Barka et Lina Borg (A1).
 
 Projet disponible ici : https://github.com/Linasa64/Chiffrement-de-message (il est conseillé de lire le readme directement sur la page d'accueil du projet sur GitHub).
 
-Codage et décodage de fichiers .txt et de phrases saisies dans le terminal, avec les méthodes César et Vigenère.
-
 Cette application dispose de 8 fonctionnalités distinctes: le codage et décodage en César et Vigenère de saisie de texte ou de fichiers d'extension .txt.
 
 Elle fonctionne avec l'ensemble des caractères, aussi bien lettres que caractères spéciaux de la table ASCII de base, et non étendue.
