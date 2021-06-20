@@ -19,6 +19,8 @@ Il est nécessaire de compiler les fichiers, et pour cela il faut utiliser le ma
 Ensuite, pour exécuter le programme, il faut taper la commande ``./main``.
 Ces commandes nécessitent un terminal sous Linux (bash).
 
+En ce qui concerne les options utilisant les fichiers, ceux-ci sont déjà fournis dans l'archive. Il suffit de taper ou de coller le texte à traiter dans le fichier texte.txt, d'exécuter le programme et de consulter le résultat dans le fichier texteCode.txt.
+
 # Documentation des fonctions
 
 ## cesar.c
