@@ -18,7 +18,7 @@ A noter que les accents ne sont pas pris en compte, et que l'ensemble des textes
 
 Il est nécessaire de compiler les fichiers, et pour cela il faut utiliser le makefile fourni, et taper la commande ``make all``.
 Ensuite, pour exécuter le programme, il faut taper la commande ``./main``.
-Ces commandes nécessitent un terminal ssous Linux (bash).
+Ces commandes nécessitent un terminal sous Linux (bash).
 
 # Documentation des fonctions
 
@@ -153,3 +153,35 @@ entrée : (chaîne) mot clé en minuscule
 sortie : (entier) valeur de test, 0 si mot clé en minuscule, 1 sinon
 
 Permet de tester si une clé saisie est bien en minuscule.
+
+## fonctionsCommunes.c
+
+### * void afficherChaine(const char* string)
+entrée : (chaîne) chaîne de caractères à afficher
+
+Permet d'afficher une chaîne de caractères donnée
+
+### * int getAsciiValueChar(char ch)
+entrée : (caractère) caractère dont on souhaite connaître la valeur ASCII
+
+sortie : (entier) valeur ASCII du caractère
+
+Permet de connaître la valeur ASCII d'un caractère donné
+
+### * char* saisieChaine()
+sortie : (chaîne) chaîne (son adresse) saisie par l'utilisateur
+
+Permet de demander à l'utilisateur de saisir une chaîne de caractères, et de l'enregistrer.
+
+### * int verificationAlphanumeriqueChaine(char* string)
+entrée : (chaîne) chaîne de caractères à vérifier
+
+sortie : (entier) 0 si la chaîne est correcte, 1 sinon
+
+Permet de vérifier si une chaîne de caractère ne contient pas de caractères spéciaux qui ne sont pas traités par l'application. 
+
+L'application peut traiter les lettres majuscules et minuscules et sait les distinguer. La casse est donc conservée d'un message à son message codé, et inversement.
+
+Les caractères spéciaux utilisables sont les suivants : ! " # $ % & ' ( ) * + - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @
+
+L'application renvoie 1 (erreur) pour tout autre caractère non mentionné ci-dessus, ce qui comprend nottament les accents.
