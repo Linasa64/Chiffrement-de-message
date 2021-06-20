@@ -185,3 +185,12 @@ L'application peut traiter les lettres majuscules et minuscules et sait les dist
 Les caractères spéciaux utilisables sont les suivants : ! " # $ % & ' ( ) * + - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @
 
 L'application renvoie 1 (erreur) pour tout autre caractère non mentionné ci-dessus, ce qui comprend nottament les accents.
+
+## main.c et gestion des cas d'erreur
+Etant donné qu'il a été demandé de ne pas mettre d'affichage de texte dans les fonctions, il a été choisi de reléguer la gestion des erreurs aux cas du switch, dans le main.
+
+Si une erreur est détectée, alors un message d'information est affichée, puis l'application est arrêtée, ou alors une nouvelle saisie est demandée.
+
+###  • case 1
+- La chaîne saisie contient des caractères spéciaux non traités par l'application (arrêt)
+- Le décalage saisi n'est pas compris entre 0 et 26 (nouvelle demande de saisie)
