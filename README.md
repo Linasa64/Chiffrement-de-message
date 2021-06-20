@@ -199,3 +199,13 @@ Si une erreur est détectée, alors un message d'information est affichée, puis
 - La chaîne saisie contient des caractères spéciaux non traités par l'application (arrêt)
 - La clé saisie contient des caractères spéciaux non traités par l'application (arrêt)
 - La clé saisie n'est pas entièrement en minuscules (arrêt)
+
+###  • case 5 & 6
+ - Le décalage saisi n'est pas compris entre 0 et 26 (nouvelle demande de saisie)
+
+###  • case 7 et 8
+- La clé saisie contient des caractères spéciaux non traités par l'application (arrêt)
+- La clé saisie n'est pas entièrement en minuscules (arrêt)
+
+###  • default
+- Si l'utilisateur saisi un choix qui n'est pas coompris entre 1 et 8, l'application est arrêtée. 
