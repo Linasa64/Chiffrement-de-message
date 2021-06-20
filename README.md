@@ -68,17 +68,21 @@ sortie : (chaîne) chaîne codée
 
 Permet de décoder une chaine de caractères, caractère par caractère, en faisant appel à la fonction deCodageCesarChar
 
-###  •  void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
+###  •  int ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
 entrée : (fichier txt) fichier contenant le texte à coder
          (fichier txt) fichier dans lequel sera écrit le texte codé
          (entier) nombre de décalage à appliquer en avant
 
+sortie : (entier) 0 si tout se déroule correctement, 1 sinon
+
 Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par un, de les coder et d'écrire le résultat codé dans un deuxième fichier texte.
 
-###  •  void ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
+###  •  int ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
 entrée : (fichier txt) fichier contenant le texte à décoder
          (fichier txt) fichier dans lequel sera écrit le texte décodé
          (entier) nombre de décalage à appliquer en arrière
+
+sortie : (entier) 0 si tout se déroule correctement, 1 sinon
 
 Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par un, de les décoder et d'écrire le résultat décodé dans un deuxième fichier texte.
 
@@ -134,17 +138,21 @@ sortie : (chaîne) chaîne de caractères décodée à partir de la clé donnée
 
 Permet de décoder une chaine de caractères, caractère par caractère, en faisant appel à la fonction decodageVigenereChar.
 
-###  •  void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
+###  •  int ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
 entrée : (fichier txt) fichier contenant le texte à coder
          (fichier txt) fichier dans lequel sera écrit le texte codé
          (chaîne) mot clé en minuscule
 
+sortie : (entier) 0 si tout se déroule correctement, 1 sinon
+
 Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par un, de les coder et d'écrire le résultat codé dans un deuxième fichier texte.
 
-###  •  void ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
+###  •  int ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
 entrée : (fichier txt) fichier contenant le texte à décoder
          (fichier txt) fichier dans lequel sera écrit le texte décodé
          (chaîne) mot clé en minuscule
+
+sortie : (entier) 0 si tout se déroule correctement, 1 sinon
 
 Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par un, de les décoder et d'écrire le résultat décodé dans un deuxième fichier texte.
 
@@ -186,6 +194,13 @@ L'application peut traiter les lettres majuscules et minuscules et sait les dist
 Les caractères spéciaux utilisables sont les suivants : ! " # $ % & ' ( ) * + - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @
 
 L'application renvoie 1 (erreur) pour tout autre caractère non mentionné ci-dessus, ce qui comprend nottament les accents.
+
+###  •  int verificationAlphanumeriqueCaractere(char c)
+entrée : (caractère) caractère à vérifier
+
+sortie : (entier) 0 si le caractère est correct, 1 sinon
+
+Permet de vérifier qu'un caractère donné appartienne bien à l'éventail de caractères qui peuvent être traités par l'application.
 
 ## main.c et gestion des cas d'erreur
 Etant donné qu'il a été demandé de ne pas mettre d'affichage de texte dans les fonctions, il a été choisi de reléguer la gestion des erreurs aux cas du switch, dans le main.
