@@ -48,7 +48,6 @@ void main() {
     printf("\n");
 
     // Ouverture des fichiers .txt à coder/décoder
-
     FILE* fichier = NULL;
     FILE* fichierCode = NULL;
  

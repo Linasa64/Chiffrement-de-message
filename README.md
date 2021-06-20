@@ -1,8 +1,7 @@
 # Chiffrement-de-message
+Projet réalisé par Asala Dikra Lakhdar Barka et Lina Borg.
 
 Codage et décodage de fichiers .txt et de phrases saisies dans le terminal, avec les méthodes César et Vigenère.
-
-Projet réalisé par Asala Dikra Lakhdar Barka et Lina Borg.
 
 Cette application dispose de 8 fonctionnalités distinctes: le codage et décodage en César et Vigenère de saisie de texte ou de fichiers d'extension .txt.
 
