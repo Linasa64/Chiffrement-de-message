@@ -24,12 +24,12 @@ Ces commandes nécessitent un terminal sous Linux (bash).
 
 ## cesar.c
 
-### * int getDecalageCesar()
+###  •  int getDecalageCesar()
 sortie: (entier) nombre de décalage à appliquer
 
 Permet de demander à l'utilisateur le décalage qu'il désire.
 
-### * char codageCesarChar(int decalage, char c)
+###  •  char codageCesarChar(int decalage, char c)
 entrée : (entier) nombre de décalage à appliquer en avant
          (caractère) caractère à coder
 
@@ -40,7 +40,7 @@ Fonctionne à partir des valeurs ascii des caractères.
 Code les majuscules en majuscules et les minuscules en minuscules.
 Les caractères spéciaux de la table ASCII de base restent intacts, de même que les espaces qui sont conservés.
 
-### * char deCodageCesarChar(int decalage, char c)
+###  •  char deCodageCesarChar(int decalage, char c)
 entrée : (entier) nombre de décalage à appliquer en arrière
          (caractère) caractère à décoder
 
@@ -51,7 +51,7 @@ Fonctionne à partir des valeurs ascii des caractères.
 Décode les majuscules en majuscules et les minuscules en minuscules.
 Les caractères spéciaux de la table ASCII de base restent intacts, de même que les espaces qui sont conservés.
 
-### * char* codageCesarChaine(char* string, int decalage)
+###  •  char* codageCesarChaine(char* string, int decalage)
 entrée : (chaîne) chaîne à coder
          (entier) nombre de décalage à appliquer en avant
 
@@ -59,7 +59,7 @@ sortie : (chaîne) chaîne codée
 
 Permet de coder une chaine de caractères, caractère par caractère, en faisant appel à la fonction codageCesarChar.
 
-### * char* deCodageCesarChaine(char* string, int decalage)
+###  •  char* deCodageCesarChaine(char* string, int decalage)
 entrée : (chaîne) chaîne à coder
          (entier) nombre de décalage à appliquer en avant
 
@@ -67,14 +67,14 @@ sortie : (chaîne) chaîne codée
 
 Permet de décoder une chaine de caractères, caractère par caractère, en faisant appel à la fonction deCodageCesarChar
 
-### * void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
+###  •  void ecrireEtCoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
 entrée : (fichier txt) fichier contenant le texte à coder
          (fichier txt) fichier dans lequel sera écrit le texte codé
          (entier) nombre de décalage à appliquer en avant
 
 Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par un, de les coder et d'écrire le résultat codé dans un deuxième fichier texte.
 
-### * void ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
+###  •  void ecrireEtDecoderFichierCesar (FILE* fichier, FILE* fichierCode, int decalage)
 entrée : (fichier txt) fichier contenant le texte à décoder
          (fichier txt) fichier dans lequel sera écrit le texte décodé
          (entier) nombre de décalage à appliquer en arrière
@@ -84,7 +84,7 @@ Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par u
 
 ## vigenere.c
 
-### * int getDecalageVigenere(char* cle, int position)
+###  •  int getDecalageVigenere(char* cle, int position)
 entrée : (chaîne) mot clé en minuscule
          (entier) position du caractère
 
@@ -93,7 +93,7 @@ sortie : (entier) décalage à appliquer sur le caractère
 Permet de déterminer le décalage à appliquer sur le caractère, en fonction de sa position et du mot clé.
 La fonction utilise la valeur ASCII des caractères.
 
-### * char codageVigenereChar(char* cle, char c, int decalage)
+###  •  char codageVigenereChar(char* cle, char c, int decalage)
 entrée : (chaîne) mot clé en minuscule
          (caractère) caractère à coder
          (entier) nombre de décalage à appliquer vers l'avant
@@ -105,7 +105,7 @@ Fonctionne à partir des valeurs ascii des caractères.
 Code les majuscules en majuscules et les minuscules en minuscules.
 Les caractères spéciaux de la table ASCII de base restent intacts, de même que les espaces qui sont conservés.
 
-### * char* codageVigenereChaine(char* string, char* cle)
+###  •  char* codageVigenereChaine(char* string, char* cle)
 entrée : (chaîne) chaîne de caractères à coder
          (chaîne) mot clé en minuscule
 
@@ -113,7 +113,7 @@ sortie : (chaîne) chaîne de caractères codée à partir de la clé donnée
 
 Permet de coder une chaine de caractères, caractère par caractère, en faisant appel à la fonction codageVigenereChar.
 
-### * char deCodageVigenereChar(char* cle, char c, int decalage)
+###  •  char deCodageVigenereChar(char* cle, char c, int decalage)
 entrée : (chaîne) mot clé en minuscule
          (caractère) caractère à décoder
          (entier) nombre de décalage à appliquer vers l'arrière
@@ -125,7 +125,7 @@ Fonctionne à partir des valeurs ascii des caractères.
 Décode les majuscules en majuscules et les minuscules en minuscules.
 Les caractères spéciaux de la table ASCII de base restent intacts, de même que les espaces qui sont conservés.
 
-### * char* deCodageVigenereChaine(char* string, char* cle)
+###  •  char* deCodageVigenereChaine(char* string, char* cle)
 entrée : (chaîne) chaîne de caractères à décoder
          (chaîne) mot clé en minuscule
 
@@ -133,21 +133,21 @@ sortie : (chaîne) chaîne de caractères décodée à partir de la clé donnée
 
 Permet de décoder une chaine de caractères, caractère par caractère, en faisant appel à la fonction decodageVigenereChar.
 
-### * void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
+###  •  void ecrireEtCoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
 entrée : (fichier txt) fichier contenant le texte à coder
          (fichier txt) fichier dans lequel sera écrit le texte codé
          (chaîne) mot clé en minuscule
 
 Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par un, de les coder et d'écrire le résultat codé dans un deuxième fichier texte.
 
-### * void ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
+###  •  void ecrireEtDecoderFichierVigenere (FILE* fichier, FILE* fichierCode, char* cle)
 entrée : (fichier txt) fichier contenant le texte à décoder
          (fichier txt) fichier dans lequel sera écrit le texte décodé
          (chaîne) mot clé en minuscule
 
 Permet de lire le texte d'un fichier en .txt, d'en lire les caractères un par un, de les décoder et d'écrire le résultat décodé dans un deuxième fichier texte.
 
-### * int verifierCaracteresMinusculesCle(char* cle)
+###  •  int verifierCaracteresMinusculesCle(char* cle)
 entrée : (chaîne) mot clé en minuscule
 
 sortie : (entier) valeur de test, 0 si mot clé en minuscule, 1 sinon
@@ -156,24 +156,24 @@ Permet de tester si une clé saisie est bien en minuscule.
 
 ## fonctionsCommunes.c
 
-### * void afficherChaine(const char* string)
+###  •  void afficherChaine(const char* string)
 entrée : (chaîne) chaîne de caractères à afficher
 
 Permet d'afficher une chaîne de caractères donnée
 
-### * int getAsciiValueChar(char ch)
+###  •  int getAsciiValueChar(char ch)
 entrée : (caractère) caractère dont on souhaite connaître la valeur ASCII
 
 sortie : (entier) valeur ASCII du caractère
 
 Permet de connaître la valeur ASCII d'un caractère donné
 
-### * char* saisieChaine()
+###  •  char* saisieChaine()
 sortie : (chaîne) chaîne (son adresse) saisie par l'utilisateur
 
 Permet de demander à l'utilisateur de saisir une chaîne de caractères, et de l'enregistrer.
 
-### * int verificationAlphanumeriqueChaine(char* string)
+###  •  int verificationAlphanumeriqueChaine(char* string)
 entrée : (chaîne) chaîne de caractères à vérifier
 
 sortie : (entier) 0 si la chaîne est correcte, 1 sinon
